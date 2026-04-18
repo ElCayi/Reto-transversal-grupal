@@ -1,0 +1,22 @@
+# Referencias locales no necesarias para el repo
+.tessdata/
+05_Actividad1_Profe_Tomas_Solucion/
+05_Actividad1_Profe_Tomas_Solucion.zip
+
+# Backend
+reto-eventos-backend/target/
+reto-eventos-backend/backend-dev.log
+reto-eventos-backend/src/main/resources/application.properties
+
+# Frontend
+reto-eventos-frontend/node_modules/
+reto-eventos-frontend/dist/
+reto-eventos-frontend/.angular/
+reto-eventos-frontend/frontend-dev.log
+reto-eventos-frontend/public/alienmilk-header-smoke.mov
+
+# IDE / sistema
+**/.idea/
+**/.vscode/
+Thumbs.db
+.DS_Store

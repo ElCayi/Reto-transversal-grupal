@@ -1,0 +1,83 @@
+export interface EventoListado {
+  idEvento: number;
+  nombre: string;
+  fechaInicio: string;
+  precio: number;
+  aforoMaximo: number;
+  estado: string;
+  destacado: string;
+  tipoEvento: string;
+}
+
+export interface EventoDetalle extends EventoListado {
+  descripcion: string;
+  duracion: number;
+  direccion: string;
+  minimoAsistencia: number;
+  idTipo: number;
+}
+
+export interface Reserva {
+  idReserva: number;
+  idEvento: number;
+  nombreEvento: string;
+  username: string;
+  cantidad: number;
+  precioVenta: number;
+  observaciones: string;
+  fechaInicioEvento: string;
+  estadoEvento: string;
+}
+
+export interface Perfil {
+  idPerfil: number;
+  nombre: string;
+}
+
+export interface TipoEvento {
+  idTipo: number;
+  nombre: string;
+  descripcion: string;
+}
+
+export interface Usuario {
+  username: string;
+  email: string;
+  nombre: string;
+  apellidos: string;
+  direccion: string;
+  enabled: number;
+  fechaRegistro: string;
+  idPerfil: number;
+  perfil: string;
+}
+
+export interface AuthUser {
+  username: string;
+  nombre: string;
+  perfil: string;
+  authorities: string[];
+}
+
+export interface RegisterPayload {
+  username: string;
+  password: string;
+  email: string;
+  nombre: string;
+  apellidos: string;
+  direccion: string;
+}
+
+export interface EventoPayload {
+  nombre: string;
+  descripcion: string;
+  fechaInicio: string;
+  duracion: number;
+  direccion: string;
+  estado: string;
+  destacado: string;
+  aforoMaximo: number;
+  minimoAsistencia: number;
+  precio: number;
+  idTipo: number;
+}

@@ -1,0 +1,250 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  color: #172033;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(247, 180, 100, 0.16), transparent 26%),
+    radial-gradient(circle at top right, rgba(32, 114, 255, 0.14), transparent 24%),
+    linear-gradient(180deg, #fffaf4 0%, #f5f8fc 56%, #eef2f8 100%);
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 3.75rem;
+  border-bottom: 1px solid rgba(23, 32, 51, 0.08);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: #172033;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.brand-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.brand-name {
+  font-family: 'Nunito', sans-serif;
+  color: #172033;
+}
+
+.brand-subtitle {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #172033;
+}
+
+.brand-logo {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  flex: 0 0 auto;
+  transition: filter 0.2s ease;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  gap: 1.85rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4a5568;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.nav-links a.active,
+.nav-links a:hover,
+.brand:hover {
+  color: #d97706;
+}
+
+.brand:hover .brand-name,
+.brand:hover .brand-subtitle {
+  color: #d97706;
+}
+
+.brand:hover .brand-logo {
+  filter: brightness(0) saturate(100%) invert(51%) sepia(84%) saturate(1200%)
+    hue-rotate(355deg) brightness(96%) contrast(93%);
+}
+
+.auth-box {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 0.75rem;
+}
+
+  .auth-action {
+    min-width: 7.75rem;
+    flex: 0 0 7.75rem;
+  }
+
+.guest-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 0.75rem;
+}
+
+  .user-pill {
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: #fef3c7;
+  color: #d97706;
+  font-weight: 700;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ghost-btn,
+.dark-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.75rem;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ghost-btn {
+  background: transparent;
+  color: #1f2430;
+  border: 1px solid #1f2430;
+}
+
+.dark-btn {
+  background: #1f2430;
+  color: white;
+  border: 1px solid #1f2430;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  color: white;
+  box-shadow: 0 14px 26px rgba(217, 119, 6, 0.22);
+}
+
+.secondary-btn {
+  background: white;
+  color: #172033;
+  border: 1px solid rgba(23, 32, 51, 0.12);
+}
+
+.ghost-btn:hover,
+.dark-btn:hover,
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-1px);
+}
+
+.ghost-btn:hover {
+  background: #d97706;
+  border-color: #d97706;
+  color: white;
+}
+
+.dark-btn:hover {
+  background: #d97706;
+  border-color: #d97706;
+  box-shadow: 0 10px 20px rgba(217, 119, 6, 0.22);
+}
+
+.primary-btn:hover {
+  box-shadow: 0 16px 28px rgba(217, 119, 6, 0.24);
+}
+
+.secondary-btn:hover {
+  background: #d97706;
+  border-color: #d97706;
+  color: white;
+}
+
+.ghost-btn:focus-visible,
+.dark-btn:focus-visible,
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible {
+  outline: 2px solid rgba(217, 119, 6, 0.35);
+  outline-offset: 2px;
+}
+
+.page-container {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 0;
+}
+
+.site-footer {
+  min-height: 7rem;
+  background: #1f2430;
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .auth-box {
+      justify-content: space-between;
+    }
+
+    .auth-action {
+      flex: 0 0 auto;
+    }
+  }

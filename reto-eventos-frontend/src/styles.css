@@ -1,0 +1,65 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #f5f8fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.ghost-btn,
+.dark-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.75rem;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ghost-btn {
+  background: transparent;
+  color: #1f2430;
+  border: 1px solid #1f2430;
+}
+
+.dark-btn {
+  background: #1f2430;
+  color: white;
+  border: 1px solid #1f2430;
+}
+
+.ghost-btn:hover,
+.dark-btn:hover {
+  transform: translateY(-1px);
+}
+
+.ghost-btn:hover {
+  background: #d97706;
+  border-color: #d97706;
+  color: white;
+}
+
+.dark-btn:hover {
+  background: #d97706;
+  border-color: #d97706;
+  box-shadow: 0 10px 20px rgba(217, 119, 6, 0.22);
+}
+
+.ghost-btn:focus-visible,
+.dark-btn:focus-visible {
+  outline: 2px solid rgba(217, 119, 6, 0.35);
+  outline-offset: 2px;
+}
