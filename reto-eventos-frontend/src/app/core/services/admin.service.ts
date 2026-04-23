@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../../environments/environment';
 import { EventoDetalle, EventoListado, EventoPayload, Perfil, TipoEvento, Usuario } from '../../models/api.models';
 
 @Injectable({ providedIn: 'root' })
 export class AdminService {
   private readonly http = inject(HttpClient);
-  private readonly adminUrl = 'http://localhost:8081/api/admin';
+  private readonly adminUrl = `${environment.apiUrl}/admin`;
 
   getEventos(): Observable<EventoListado[]> {
     return this.http.get<EventoListado[]>(`${this.adminUrl}/eventos`);

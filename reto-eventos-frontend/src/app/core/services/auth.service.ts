@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
+import { environment } from '../../../environments/environment';
 import { AuthUser, RegisterPayload, Usuario } from '../../models/api.models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:8081/api';
+  private readonly apiUrl = environment.apiUrl;
   private readonly authHeaderKey = 'reto-eventos-basic-auth';
 
   readonly currentUser = signal<AuthUser | null>(null);
