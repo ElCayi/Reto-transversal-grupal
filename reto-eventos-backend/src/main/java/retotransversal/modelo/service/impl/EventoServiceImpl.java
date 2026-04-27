@@ -1,13 +1,16 @@
 package retotransversal.modelo.service.impl;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import retotransversal.exception.RecursoNoEncontradoException;
 import retotransversal.modelo.entities.EstadoEvento;
 import retotransversal.modelo.entities.Evento;
 import retotransversal.modelo.repository.EventoRepository;
+import retotransversal.modelo.repository.ReservaRepository;
 import retotransversal.modelo.service.EventoService;
 
 @Service
@@ -15,6 +18,7 @@ import retotransversal.modelo.service.EventoService;
 public class EventoServiceImpl implements EventoService {
 
 	private final EventoRepository eventoRepository;
+	private final ReservaRepository reservaRepository;
 
 	@Override
 	public Evento findById(Integer id) {
@@ -42,8 +46,10 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteOne(Integer id) {
 		findById(id);
+		reservaRepository.deleteAll(reservaRepository.findByEventoIdEvento(id));
 		eventoRepository.deleteById(id);
 		return 1;
 	}

@@ -169,15 +169,6 @@ import {
             </select>
           </label>
 
-          <label class="field">
-            <span>Estado</span>
-            <select [(ngModel)]="eventoForm.estado" name="eventoEstado">
-              <option value="ACTIVO">Activo</option>
-              <option value="CANCELADO">Cancelado</option>
-              <option value="TERMINADO">Terminado</option>
-            </select>
-          </label>
-
           <button type="submit">
             {{ eventoEditandoId === null ? 'Crear sesion' : 'Guardar sesion' }}
           </button>
@@ -187,7 +178,7 @@ import {
           <div class="block-header">
             <div>
               <h2>Sesiones</h2>
-              <p class="block-helper">Edita, destaca, cancela o elimina eventos.</p>
+              <p class="block-helper">Edita o elimina eventos. Las sesiones se guardan siempre activas.</p>
             </div>
           </div>
           <div class="table-list">

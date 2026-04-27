@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import retotransversal.exception.ConflictoNegocioException;
 import retotransversal.exception.RecursoNoEncontradoException;
 import retotransversal.modelo.entities.Usuario;
+import retotransversal.modelo.repository.ReservaRepository;
 import retotransversal.modelo.repository.UsuarioRepository;
 import retotransversal.modelo.service.UsuarioService;
 
@@ -18,6 +20,7 @@ import retotransversal.modelo.service.UsuarioService;
 public class UsuarioServiceImpl implements UsuarioService {
 
 	private final UsuarioRepository usuarioRepository;
+	private final ReservaRepository reservaRepository;
 	private final PasswordEncoder passwordEncoder;
 
 	@Override
@@ -57,8 +60,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
+	@Transactional
 	public int deleteOne(String username) {
 		findById(username);
+		reservaRepository.deleteAll(reservaRepository.findByUsuarioUsername(username));
 		usuarioRepository.deleteById(username);
 		return 1;
 	}

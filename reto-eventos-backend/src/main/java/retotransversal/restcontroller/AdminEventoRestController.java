@@ -67,7 +67,7 @@ public class AdminEventoRestController {
 				.fechaInicio(dto.getFechaInicio())
 				.duracion(dto.getDuracion())
 				.direccion(dto.getDireccion())
-				.estado(dto.getEstado() == null ? EstadoEvento.ACTIVO : EstadoEvento.valueOf(dto.getEstado().toUpperCase()))
+				.estado(EstadoEvento.ACTIVO)
 				.aforoMaximo(dto.getAforoMaximo())
 				.minimoAsistencia(dto.getMinimoAsistencia())
 				.precio(dto.getPrecio())

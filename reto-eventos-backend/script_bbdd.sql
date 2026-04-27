@@ -87,8 +87,8 @@ INSERT INTO eventos (nombre, descripcion, fecha_inicio, duracion, direccion, est
 ('Cata de Leche Abducida', 'Sesion inaugural para probar la cosecha lactea recuperada en la orbita de Orion', '2026-05-20', 120, 'Hangar 7', 'ACTIVO', 200, 50, 35.00, 1),
 ('Abduccion Suave para Principiantes', 'Experiencia guiada con luces bajas, humo y protocolo de bienvenida interplanetaria', '2026-05-28', 100, 'Cupula Beta', 'ACTIVO', 120, 30, 22.50, 2),
 ('Taller de Espuma Galactica', 'Laboratorio practico para preparar mezclas AlienMilk con textura cosmica', '2026-06-10', 150, 'Modulo Lacteo 3', 'ACTIVO', 60, 20, 55.00, 3),
-('Ruta Nocturna por el Hangar', 'Recorrido guiado por las zonas donde se conserva el primer lote de leche abducida', '2026-04-18', 90, 'Acceso Norte del Hangar', 'TERMINADO', 40, 10, 12.00, 4),
-('Sesion Eclipse Cancelada', 'Sesion suspendida por interferencias en la cupula de ordeño lunar', '2026-07-01', 180, 'Cupula Eclipse', 'CANCELADO', 500, 100, 48.00, 1);
+('Ruta Nocturna por el Hangar', 'Recorrido guiado por las zonas donde se conserva el primer lote de leche abducida', '2026-05-18', 90, 'Acceso Norte del Hangar', 'ACTIVO', 40, 10, 12.00, 4),
+('Sesion Eclipse Lunar', 'Sesion especial en la cupula de ordeño lunar con ambientacion inmersiva y cata nocturna', '2026-07-01', 180, 'Cupula Eclipse', 'ACTIVO', 500, 100, 48.00, 1);
 
 INSERT INTO reservas (id_evento, username, precio_venta, observaciones, cantidad) VALUES
 (1, 'ana', 70.00, 'Queremos mesa cerca del lacteobar', 2),
