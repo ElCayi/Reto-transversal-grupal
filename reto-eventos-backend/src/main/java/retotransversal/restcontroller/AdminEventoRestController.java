@@ -53,11 +53,6 @@ public class AdminEventoRestController {
 		return ResponseEntity.ok(EventoDetalleDto.fromEntity(eventoService.cancelarEvento(idEvento)));
 	}
 
-	@PatchMapping("/{idEvento}/destacado/{valor}")
-	public ResponseEntity<EventoDetalleDto> destacado(@PathVariable Integer idEvento, @PathVariable String valor) {
-		return ResponseEntity.ok(EventoDetalleDto.fromEntity(eventoService.cambiarDestacado(idEvento, valor)));
-	}
-
 	@DeleteMapping("/{idEvento}")
 	public ResponseEntity<Void> delete(@PathVariable Integer idEvento) {
 		eventoService.deleteOne(idEvento);
@@ -73,7 +68,6 @@ public class AdminEventoRestController {
 				.duracion(dto.getDuracion())
 				.direccion(dto.getDireccion())
 				.estado(dto.getEstado() == null ? EstadoEvento.ACTIVO : EstadoEvento.valueOf(dto.getEstado().toUpperCase()))
-				.destacado(dto.getDestacado() == null ? "N" : dto.getDestacado().toUpperCase())
 				.aforoMaximo(dto.getAforoMaximo())
 				.minimoAsistencia(dto.getMinimoAsistencia())
 				.precio(dto.getPrecio())

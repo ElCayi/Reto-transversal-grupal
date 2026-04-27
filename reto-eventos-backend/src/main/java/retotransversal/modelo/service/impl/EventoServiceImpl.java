@@ -32,9 +32,6 @@ public class EventoServiceImpl implements EventoService {
 		if (entidad.getEstado() == null) {
 			entidad.setEstado(EstadoEvento.ACTIVO);
 		}
-		if (entidad.getDestacado() == null || entidad.getDestacado().isBlank()) {
-			entidad.setDestacado("N");
-		}
 		return eventoRepository.save(entidad);
 	}
 
@@ -57,11 +54,6 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
-	public List<Evento> findDestacados() {
-		return eventoRepository.findByDestacadoAndEstado("S", EstadoEvento.ACTIVO);
-	}
-
-	@Override
 	public List<Evento> findCancelados() {
 		return eventoRepository.findByEstado(EstadoEvento.CANCELADO);
 	}
@@ -80,16 +72,6 @@ public class EventoServiceImpl implements EventoService {
 	public Evento cancelarEvento(Integer idEvento) {
 		Evento evento = findById(idEvento);
 		evento.setEstado(EstadoEvento.CANCELADO);
-		return eventoRepository.save(evento);
-	}
-
-	@Override
-	public Evento cambiarDestacado(Integer idEvento, String destacado) {
-		Evento evento = findById(idEvento);
-		if (!"S".equalsIgnoreCase(destacado) && !"N".equalsIgnoreCase(destacado)) {
-			throw new IllegalArgumentException("El valor destacado debe ser S o N");
-		}
-		evento.setDestacado(destacado.toUpperCase());
 		return eventoRepository.save(evento);
 	}
 }

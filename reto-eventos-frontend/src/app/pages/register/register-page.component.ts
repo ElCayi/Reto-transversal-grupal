@@ -129,7 +129,7 @@ import { AuthService } from '../../core/services/auth.service';
     }
 
     .eyebrow-brand-subtitle {
-      font-family: 'Times New Roman', Times, serif;
+      font-family: 'Arial', Times, serif;
       font-size: 0.82rem;
       font-weight: 600;
       color: #20242b;

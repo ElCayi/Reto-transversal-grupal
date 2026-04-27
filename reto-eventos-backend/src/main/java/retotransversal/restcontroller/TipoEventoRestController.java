@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import retotransversal.modelo.dto.TipoEventoDto;
-import retotransversal.modelo.entities.TipoEvento;
+import retotransversal.modelo.dto.TipoEventoPayloadDto;
 import retotransversal.modelo.service.TipoEventoService;
 
 @RestController
@@ -35,13 +35,14 @@ public class TipoEventoRestController {
 	}
 
 	@PostMapping
-	public ResponseEntity<TipoEventoDto> create(@RequestBody TipoEvento tipoEvento) {
+	public ResponseEntity<TipoEventoDto> create(@RequestBody TipoEventoPayloadDto dto) {
 		return ResponseEntity.status(org.springframework.http.HttpStatus.CREATED)
-				.body(TipoEventoDto.fromEntity(tipoEventoService.insertOne(tipoEvento)));
+				.body(TipoEventoDto.fromEntity(tipoEventoService.insertOne(dto.toEntity())));
 	}
 
 	@PutMapping("/{idTipo}")
-	public ResponseEntity<TipoEventoDto> update(@PathVariable Integer idTipo, @RequestBody TipoEvento tipoEvento) {
+	public ResponseEntity<TipoEventoDto> update(@PathVariable Integer idTipo, @RequestBody TipoEventoPayloadDto dto) {
+		var tipoEvento = dto.toEntity();
 		tipoEvento.setIdTipo(idTipo);
 		return ResponseEntity.ok(TipoEventoDto.fromEntity(tipoEventoService.updateOne(tipoEvento)));
 	}

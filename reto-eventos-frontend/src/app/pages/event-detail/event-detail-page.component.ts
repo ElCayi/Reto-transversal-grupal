@@ -15,7 +15,24 @@ import { EventoDetalle } from '../../models/api.models';
   template: `
     <a class="back-link" routerLink="/reservas">← Volver a sesiones</a>
 
-    <section class="detail-card" *ngIf="evento() as data">
+    <section class="status-card" *ngIf="loadingDetalle()">
+      <h1>Cargando sesion</h1>
+      <p class="helper">Estamos recuperando el detalle del evento.</p>
+    </section>
+
+    <section class="status-card" *ngIf="!loadingDetalle() && errorMessage()">
+      <h1>No se ha podido cargar la sesion</h1>
+      <p class="helper">{{ errorMessage() }}</p>
+      <a class="login-link" routerLink="/reservas">Volver a sesiones</a>
+    </section>
+
+    <section class="status-card" *ngIf="!loadingDetalle() && !errorMessage() && !evento()">
+      <h1>Sesion no disponible</h1>
+      <p class="helper">No hemos encontrado el evento solicitado.</p>
+      <a class="login-link" routerLink="/reservas">Volver a sesiones</a>
+    </section>
+
+    <section class="detail-card" *ngIf="!loadingDetalle() && !errorMessage() && evento() as data">
       <div class="detail-main">
         <p class="eyebrow">
           <img src="alienmilk-ufo.svg" alt="" aria-hidden="true" />
@@ -114,6 +131,19 @@ import { EventoDetalle } from '../../models/api.models';
       border-radius: 28px;
       background: white;
       box-shadow: 0 24px 44px rgba(23, 32, 51, 0.08);
+    }
+
+    .status-card {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.8rem;
+      border-radius: 28px;
+      background: white;
+      box-shadow: 0 24px 44px rgba(23, 32, 51, 0.08);
+      display: grid;
+      gap: 0.8rem;
     }
 
     .eyebrow {
@@ -260,6 +290,7 @@ export class EventDetailPageComponent implements OnInit {
   readonly authService = inject(AuthService);
 
   readonly evento = signal<EventoDetalle | null>(null);
+  readonly loadingDetalle = signal(true);
   readonly loading = signal(false);
   readonly errorMessage = signal('');
 
@@ -270,7 +301,27 @@ export class EventDetailPageComponent implements OnInit {
   ngOnInit(): void {
     this.currentUrl = this.router.url;
     const idEvento = Number(this.route.snapshot.paramMap.get('id'));
-    this.eventService.getDetalle(idEvento).subscribe((data) => this.evento.set(data));
+
+    if (!Number.isInteger(idEvento) || idEvento <= 0) {
+      this.loadingDetalle.set(false);
+      this.errorMessage.set('El identificador del evento no es valido.');
+      return;
+    }
+
+    this.loadingDetalle.set(true);
+    this.errorMessage.set('');
+    this.evento.set(null);
+
+    this.eventService.getDetalle(idEvento).subscribe({
+      next: (data) => {
+        this.evento.set(data);
+        this.loadingDetalle.set(false);
+      },
+      error: (err) => {
+        this.loadingDetalle.set(false);
+        this.errorMessage.set(err?.error?.message ?? 'No se ha podido cargar el detalle de la sesion.');
+      },
+    });
   }
 
   reservar(): void {

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { NgIf, ViewportScroller } from '@angular/common';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 import { AuthService } from './core/services/auth.service';
 
@@ -12,9 +12,24 @@ import { AuthService } from './core/services/auth.service';
 })
 export class App {
   readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly viewportScroller = inject(ViewportScroller);
 
   constructor() {
     this.authService.loadSession()?.subscribe();
+  }
+
+  goToSection(event: Event, sectionId: string): void {
+    event.preventDefault();
+
+    this.router.navigate(['/'], { fragment: sectionId }).then(() => {
+      setTimeout(() => this.viewportScroller.scrollToAnchor(sectionId));
+    });
+  }
+
+  shouldShowFooter(): boolean {
+    const path = this.router.url.split('?')[0].split('#')[0];
+    return path === '/' || path === '/login' || path === '/registro';
   }
 
   logout(): void {

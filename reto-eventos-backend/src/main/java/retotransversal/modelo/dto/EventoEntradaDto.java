@@ -20,7 +20,6 @@ public class EventoEntradaDto {
 	private Integer duracion;
 	private String direccion;
 	private String estado;
-	private String destacado;
 	private Integer aforoMaximo;
 	private Integer minimoAsistencia;
 	private BigDecimal precio;

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import retotransversal.modelo.dto.PerfilDto;
-import retotransversal.modelo.entities.Perfil;
+import retotransversal.modelo.dto.PerfilPayloadDto;
 import retotransversal.modelo.service.PerfilService;
 
 @RestController
@@ -35,13 +35,14 @@ public class PerfilRestController {
 	}
 
 	@PostMapping
-	public ResponseEntity<PerfilDto> create(@RequestBody Perfil perfil) {
+	public ResponseEntity<PerfilDto> create(@RequestBody PerfilPayloadDto dto) {
 		return ResponseEntity.status(org.springframework.http.HttpStatus.CREATED)
-				.body(PerfilDto.fromEntity(perfilService.insertOne(perfil)));
+				.body(PerfilDto.fromEntity(perfilService.insertOne(dto.toEntity())));
 	}
 
 	@PutMapping("/{idPerfil}")
-	public ResponseEntity<PerfilDto> update(@PathVariable Integer idPerfil, @RequestBody Perfil perfil) {
+	public ResponseEntity<PerfilDto> update(@PathVariable Integer idPerfil, @RequestBody PerfilPayloadDto dto) {
+		var perfil = dto.toEntity();
 		perfil.setIdPerfil(idPerfil);
 		return ResponseEntity.ok(PerfilDto.fromEntity(perfilService.updateOne(perfil)));
 	}

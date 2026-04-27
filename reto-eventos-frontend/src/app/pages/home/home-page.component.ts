@@ -266,7 +266,7 @@ import { RouterLink } from '@angular/router';
     }
 
     .section-brand-subtitle {
-      font-family: 'Times New Roman', Times, serif;
+      font-family: 'Arial', Times, serif;
       font-size: 0.95rem;
       font-weight: 600;
       color: #20242b;

@@ -14,10 +14,6 @@ export class EventService {
     return this.http.get<EventoListado[]>(`${this.apiUrl}/activos`);
   }
 
-  getDestacados(): Observable<EventoListado[]> {
-    return this.http.get<EventoListado[]>(`${this.apiUrl}/destacados`);
-  }
-
   getCancelados(): Observable<EventoListado[]> {
     return this.http.get<EventoListado[]>(`${this.apiUrl}/cancelados`);
   }

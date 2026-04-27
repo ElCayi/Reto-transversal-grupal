@@ -8,8 +8,6 @@ public interface EventoService extends CrudGenerico<Evento, Integer> {
 
 	List<Evento> findActivos();
 
-	List<Evento> findDestacados();
-
 	List<Evento> findCancelados();
 
 	List<Evento> findTerminados();
@@ -17,6 +15,4 @@ public interface EventoService extends CrudGenerico<Evento, Integer> {
 	List<Evento> findActivosPorTipo(Integer idTipo);
 
 	Evento cancelarEvento(Integer idEvento);
-
-	Evento cambiarDestacado(Integer idEvento, String destacado);
 }

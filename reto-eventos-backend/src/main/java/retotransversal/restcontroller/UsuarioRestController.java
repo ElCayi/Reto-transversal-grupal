@@ -43,6 +43,9 @@ public class UsuarioRestController {
 
 	@PostMapping
 	public ResponseEntity<UsuarioSalidaDto> create(@RequestBody UsuarioEntradaDto dto) {
+		if (dto.getPassword() == null || dto.getPassword().isBlank()) {
+			dto.setPassword("1234");
+		}
 		return ResponseEntity.status(org.springframework.http.HttpStatus.CREATED)
 				.body(UsuarioSalidaDto.fromEntity(usuarioService.insertOne(toEntity(dto))));
 	}

@@ -21,7 +21,6 @@ public class EventoListadoDto {
 	private BigDecimal precio;
 	private Integer aforoMaximo;
 	private String estado;
-	private String destacado;
 	private String tipoEvento;
 
 	public static EventoListadoDto fromEntity(Evento evento) {
@@ -32,7 +31,6 @@ public class EventoListadoDto {
 				.precio(evento.getPrecio())
 				.aforoMaximo(evento.getAforoMaximo())
 				.estado(evento.getEstado().name())
-				.destacado(evento.getDestacado())
 				.tipoEvento(evento.getTipoEvento().getNombre())
 				.build();
 	}

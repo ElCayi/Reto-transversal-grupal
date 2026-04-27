@@ -5,7 +5,6 @@ export interface EventoListado {
   precio: number;
   aforoMaximo: number;
   estado: string;
-  destacado: string;
   tipoEvento: string;
 }
 
@@ -68,6 +67,27 @@ export interface RegisterPayload {
   direccion: string;
 }
 
+export interface UsuarioPayload {
+  username: string;
+  password?: string;
+  email: string;
+  nombre: string;
+  apellidos: string;
+  direccion: string;
+  enabled: number;
+  fechaRegistro: string;
+  idPerfil: number;
+}
+
+export interface TipoEventoPayload {
+  nombre: string;
+  descripcion: string;
+}
+
+export interface PerfilPayload {
+  nombre: string;
+}
+
 export interface EventoPayload {
   nombre: string;
   descripcion: string;
@@ -75,7 +95,6 @@ export interface EventoPayload {
   duracion: number;
   direccion: string;
   estado: string;
-  destacado: string;
   aforoMaximo: number;
   minimoAsistencia: number;
   precio: number;

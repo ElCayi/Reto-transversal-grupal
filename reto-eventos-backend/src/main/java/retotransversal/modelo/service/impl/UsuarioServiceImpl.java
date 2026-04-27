@@ -46,9 +46,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Usuario updateOne(Usuario entidad) {
-		findById(entidad.getUsername());
+		Usuario usuarioExistente = findById(entidad.getUsername());
 		validarDuplicadosEdicion(entidad);
-		entidad.setPassword(codificarPasswordSiHaceFalta(entidad.getPassword()));
+		if (entidad.getPassword() == null || entidad.getPassword().isBlank()) {
+			entidad.setPassword(usuarioExistente.getPassword());
+		} else {
+			entidad.setPassword(codificarPasswordSiHaceFalta(entidad.getPassword()));
+		}
 		return usuarioRepository.save(entidad);
 	}
 

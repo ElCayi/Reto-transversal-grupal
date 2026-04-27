@@ -86,6 +86,13 @@ public class ReservaServiceImpl implements ReservaService {
 		return 1;
 	}
 
+	@Override
+	public int cancelarReservaAdmin(Integer idReserva) {
+		findById(idReserva);
+		reservaRepository.deleteById(idReserva);
+		return 1;
+	}
+
 	private void validarReserva(Evento evento, String username, Integer cantidad) {
 		if (cantidad == null || cantidad < 1) {
 			throw new ConflictoNegocioException("La cantidad debe ser al menos 1");

@@ -50,9 +50,6 @@ public class Evento {
 	@Column(nullable = false, length = 20)
 	private EstadoEvento estado;
 
-	@Column(nullable = false, length = 1)
-	private String destacado;
-
 	@Column(name = "aforo_maximo", nullable = false)
 	private Integer aforoMaximo;
 

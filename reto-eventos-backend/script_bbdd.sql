@@ -43,7 +43,6 @@ CREATE TABLE eventos (
 	duracion INT,
 	direccion VARCHAR(100),
 	estado VARCHAR(20) NOT NULL,
-	destacado CHAR(1) NOT NULL DEFAULT 'N',
 	aforo_maximo INT NOT NULL,
 	minimo_asistencia INT,
 	precio DECIMAL(9,2) NOT NULL,
@@ -51,9 +50,7 @@ CREATE TABLE eventos (
 	CONSTRAINT fk_eventos_tipos
 		FOREIGN KEY (id_tipo) REFERENCES tipos_evento(id_tipo),
 	CONSTRAINT ck_eventos_estado
-		CHECK (estado IN ('ACTIVO', 'CANCELADO', 'TERMINADO')),
-	CONSTRAINT ck_eventos_destacado
-		CHECK (destacado IN ('S', 'N'))
+		CHECK (estado IN ('ACTIVO', 'CANCELADO', 'TERMINADO'))
 );
 
 CREATE TABLE reservas (
@@ -86,12 +83,12 @@ INSERT INTO usuarios (username, password, email, nombre, apellidos, direccion, e
 ('ana', '{noop}1234', 'ana@reto.com', 'Ana', 'Lopez', 'Calle Mayor 12', 1, '2026-03-31', 2),
 ('luis', '{noop}1234', 'luis@reto.com', 'Luis', 'Garcia', 'Calle Sol 8', 1, '2026-03-31', 2);
 
-INSERT INTO eventos (nombre, descripcion, fecha_inicio, duracion, direccion, estado, destacado, aforo_maximo, minimo_asistencia, precio, id_tipo) VALUES
-('Cata de Leche Abducida', 'Sesion inaugural para probar la cosecha lactea recuperada en la orbita de Orion', '2026-05-20', 120, 'Hangar 7', 'ACTIVO', 'S', 200, 50, 35.00, 1),
-('Abduccion Suave para Principiantes', 'Experiencia guiada con luces bajas, humo y protocolo de bienvenida interplanetaria', '2026-05-28', 100, 'Cupula Beta', 'ACTIVO', 'N', 120, 30, 22.50, 2),
-('Taller de Espuma Galactica', 'Laboratorio practico para preparar mezclas AlienMilk con textura cosmica', '2026-06-10', 150, 'Modulo Lacteo 3', 'ACTIVO', 'S', 60, 20, 55.00, 3),
-('Ruta Nocturna por el Hangar', 'Recorrido guiado por las zonas donde se conserva el primer lote de leche abducida', '2026-04-18', 90, 'Acceso Norte del Hangar', 'TERMINADO', 'N', 40, 10, 12.00, 4),
-('Sesion Eclipse Cancelada', 'Sesion suspendida por interferencias en la cupula de ordeño lunar', '2026-07-01', 180, 'Cupula Eclipse', 'CANCELADO', 'N', 500, 100, 48.00, 1);
+INSERT INTO eventos (nombre, descripcion, fecha_inicio, duracion, direccion, estado, aforo_maximo, minimo_asistencia, precio, id_tipo) VALUES
+('Cata de Leche Abducida', 'Sesion inaugural para probar la cosecha lactea recuperada en la orbita de Orion', '2026-05-20', 120, 'Hangar 7', 'ACTIVO', 200, 50, 35.00, 1),
+('Abduccion Suave para Principiantes', 'Experiencia guiada con luces bajas, humo y protocolo de bienvenida interplanetaria', '2026-05-28', 100, 'Cupula Beta', 'ACTIVO', 120, 30, 22.50, 2),
+('Taller de Espuma Galactica', 'Laboratorio practico para preparar mezclas AlienMilk con textura cosmica', '2026-06-10', 150, 'Modulo Lacteo 3', 'ACTIVO', 60, 20, 55.00, 3),
+('Ruta Nocturna por el Hangar', 'Recorrido guiado por las zonas donde se conserva el primer lote de leche abducida', '2026-04-18', 90, 'Acceso Norte del Hangar', 'TERMINADO', 40, 10, 12.00, 4),
+('Sesion Eclipse Cancelada', 'Sesion suspendida por interferencias en la cupula de ordeño lunar', '2026-07-01', 180, 'Cupula Eclipse', 'CANCELADO', 500, 100, 48.00, 1);
 
 INSERT INTO reservas (id_evento, username, precio_venta, observaciones, cantidad) VALUES
 (1, 'ana', 70.00, 'Queremos mesa cerca del lacteobar', 2),

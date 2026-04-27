@@ -25,11 +25,6 @@ public class EventoRestController {
 		return ResponseEntity.ok(eventoService.findActivos().stream().map(EventoListadoDto::fromEntity).toList());
 	}
 
-	@GetMapping("/destacados")
-	public ResponseEntity<List<EventoListadoDto>> destacados() {
-		return ResponseEntity.ok(eventoService.findDestacados().stream().map(EventoListadoDto::fromEntity).toList());
-	}
-
 	@GetMapping("/cancelados")
 	public ResponseEntity<List<EventoListadoDto>> cancelados() {
 		return ResponseEntity.ok(eventoService.findCancelados().stream().map(EventoListadoDto::fromEntity).toList());

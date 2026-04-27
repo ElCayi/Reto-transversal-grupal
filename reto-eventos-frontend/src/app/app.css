@@ -49,7 +49,7 @@
 }
 
 .brand-subtitle {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Arial', Times, serif;
   font-size: 0.72em;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -75,7 +75,7 @@
 .nav-links a {
   text-decoration: none;
   color: #4a5568;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Arial', Times, serif;
   font-size: 1.08rem;
   font-weight: 500;
 }
@@ -228,8 +228,117 @@
 }
 
 .site-footer {
-  min-height: 7rem;
   background: #1f2430;
+  color: #f8fafc;
+  margin-top: 4rem;
+  padding: 06.5rem 3.75rem 2.1rem;
+}
+
+.footer-top,
+.footer-bottom {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 1fr;
+  gap: 2rem;
+  padding-bottom: 2.2rem;
+  border-bottom: 1px solid rgba(248, 250, 252, 0.14);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.site-footer p {
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.site-footer a {
+  color: #f8fafc;
+  text-decoration: none;
+}
+
+.footer-col h3 {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.45rem;
+}
+
+.footer-cta {
+  align-self: start;
+  padding: 0.8rem 1.15rem;
+  border-radius: 999px;
+  background: #f4f0e8;
+  color: #1f2430 !important;
+  font-weight: 800;
+}
+
+.footer-social,
+.footer-meta,
+.footer-badges {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.footer-menu,
+.footer-contact {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-menu a {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(248, 250, 252, 0.1);
+}
+
+.footer-contact li {
+  color: #e2e8f0;
+  line-height: 1.7;
+}
+
+.footer-bottom {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: 2rem;
+}
+
+.footer-legal {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.footer-meta {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.footer-badge {
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #1e293b;
+  font-weight: 800;
 }
 
 @media (max-width: 900px) {
@@ -247,4 +356,14 @@
     .auth-action {
       flex: 0 0 auto;
     }
+
+  .site-footer {
+    padding: 2rem 1rem 1.6rem;
   }
+
+  .footer-top,
+  .footer-legal {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+}

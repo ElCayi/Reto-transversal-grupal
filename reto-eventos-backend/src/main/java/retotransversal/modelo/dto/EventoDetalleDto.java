@@ -22,7 +22,6 @@ public class EventoDetalleDto {
 	private Integer duracion;
 	private String direccion;
 	private String estado;
-	private String destacado;
 	private Integer aforoMaximo;
 	private Integer minimoAsistencia;
 	private BigDecimal precio;
@@ -38,7 +37,6 @@ public class EventoDetalleDto {
 				.duracion(evento.getDuracion())
 				.direccion(evento.getDireccion())
 				.estado(evento.getEstado().name())
-				.destacado(evento.getDestacado())
 				.aforoMaximo(evento.getAforoMaximo())
 				.minimoAsistencia(evento.getMinimoAsistencia())
 				.precio(evento.getPrecio())

@@ -11,4 +11,6 @@ public interface ReservaService extends CrudGenerico<Reserva, Integer> {
 	Reserva reservarEvento(Integer idEvento, String username, Integer cantidad, String observaciones);
 
 	int cancelarReserva(Integer idReserva, String username);
+
+	int cancelarReservaAdmin(Integer idReserva);
 }
